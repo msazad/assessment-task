@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MAC Address Generator</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    input, button { margin: 10px 0; padding: 10px; }
+  </style>
+</head>
+<body>
+  <h1>Generate MAC Addresses</h1>
+  <form id="cidForm">
+    <label for="cid">Enter 128-bit CID (hexadecimal):</label><br>
+    <input type="text" id="cid" name="cid" required maxlength="32" placeholder="Enter 128-bit CID"><br>
+    <button type="submit">Generate MAC Addresses</button>
+  </form>
+  <p id="output"></p>
+  
+  <script>
+    document.getElementById('cidForm').addEventListener('submit', async function(event) {
+      event.preventDefault();
+      const cid = document.getElementById('cid').value;
+      const response = await fetch('/generate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ cid })
+      });
+      const data = await response.json();
+      document.getElementById('output').textContent = `Primary MAC: ${data.primaryMac}, Secondary MAC: ${data.secondaryMac}`;
+    });
+  </script>
+</body>
+</html>
