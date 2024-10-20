@@ -5,12 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MAC Address Generator</title>
   <style>
-    body { font-family: Arial, sans-serif; padding: 20px; }
-    input, button { margin: 10px 0; padding: 10px; }
+       body { 
+      font-family: Arial, sans-serif; 
+      padding: 20px; 
+      background-color: #0dbdf3; 
+      color: white;
+    }
+    input, button { 
+      margin: 10px 0; 
+      padding: 10px; 
+      border: none; 
+      border-radius: 5px;
+    }
+    input { 
+      width: 100%;
+      box-sizing: border-box;
+    }
+    button { 
+      background-color: white; 
+      color: #1fb1eb; 
+      cursor: pointer; 
+    }
+    button:hover { 
+      background-color: #ddd; 
+    }
   </style>
 </head>
 <body>
-  <h1>Generate MAC Addresses</h1>
+  <h1>Generate MAC Addresses With GO</h1>
   <form id="cidForm">
     <label for="cid">Enter 128-bit CID (hexadecimal):</label><br>
     <input type="text" id="cid" name="cid" required maxlength="32" placeholder="Enter 128-bit CID"><br>
