@@ -40,7 +40,8 @@ func generateMACAddresses(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Generate the primary MAC address (48 bits)
-	primaryMac := (macInt & 0xFFFFFFFFFFFF00) | 0x000001 // Ensure unicast
+	//primaryMac := (macInt & 0xFFFFFFFFFFFF00) | 0x000001 // Ensure unicast
+	primaryMac := (macInt & 0xFFFFFFFFFFFF) | 0x020000000000
 
 	// Generate the secondary MAC by incrementing
 	secondaryMac := primaryMac + 1
